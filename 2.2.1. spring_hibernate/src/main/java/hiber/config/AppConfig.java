@@ -1,5 +1,6 @@
 package hiber.config;
 
+import hiber.model.Car;
 import hiber.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -43,9 +44,14 @@ public class AppConfig {
       Properties props=new Properties();
       props.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
       props.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-
+      
+      props.put("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
+      props.put("hibernate.highlight_sql", env.getProperty("hibernate.highlight_sql"));
+      props.put("hibernate.use_nationalized_character_data", env.getProperty("hibernate.use_nationalized_character_data"));
+      
       factoryBean.setHibernateProperties(props);
-      factoryBean.setAnnotatedClasses(User.class);
+      factoryBean.setAnnotatedClasses(User.class, Car.class);
+      
       return factoryBean;
    }
 
