@@ -1,6 +1,13 @@
 package hiber.model;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.Column;
 
 @Entity
 @Table(name = "cars")
@@ -12,10 +19,10 @@ public class Car {
     private Long id;
     
     @Column(name = "model")
-    String model;
+    private String model;
     
     @Column(name = "series")
-    int series;
+    private int series;
     
     @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
     private User user;
